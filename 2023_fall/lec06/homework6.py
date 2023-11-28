@@ -1,4 +1,7 @@
 import numpy as np
+import math
+import importlib
+import matplotlib.pyplot as plt
 
 def minimum_Fs(f):
     '''
@@ -11,7 +14,7 @@ def minimum_Fs(f):
     Fs (scalar): the lowest sampling frequency (samples/second) that would
     not cause aliasing at a tone of f Hz.
     '''
-    Fs = 0  # change this line
+    Fs = 2*f  # change this line
     return Fs
 
 def omega(f, Fs):
@@ -25,7 +28,7 @@ def omega(f, Fs):
     @result:
     omega (scalar): radial frequency in radians/sample
     '''
-    omega = 0  # change this line
+    omega = 2 * math.pi * f / Fs  # change this line
     return omega
 
 def pure_tone(omega, N):
@@ -39,6 +42,7 @@ def pure_tone(omega, N):
     @result:
     x (array): N samples from the signal cos(omega*n)
     '''
-    x = 0 # change this line
+    n = np.arange(N)
+    x = np.cos(omega * n)  # change this line
     return x
 
